@@ -1,5 +1,17 @@
 version: 2.1
 commands:
+  setup-bundler:
+    steps:
+      - run:
+          name: Remove old bundler version
+          command: gem uninstall bundler
+      - run:
+          name: Update rubygems gem
+          command: gem update --system
+      - run:
+          name: Install new bundler version
+          command: gem install bundler
+
   install-dependencies:
     steps:
       - restore_cache:
@@ -12,6 +24,13 @@ commands:
           key: pg_failover-{{ checksum "pg_failover.gemspec" }}-{{ checksum "Gemfile" }}
           paths:
             - vendor/bundle
+
+  style:
+    steps:
+      - run:
+          name: Run rubocop
+          command: bundle exec rubocop
+
   test:
     steps:
       - run:
@@ -42,7 +61,9 @@ jobs:
         type: string
     steps:
       - checkout
+      - setup-bundler
       - install-dependencies
+      - style
       - test
   publish:
     executor:

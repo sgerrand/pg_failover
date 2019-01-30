@@ -25,7 +25,7 @@ module PgFailover
         PgFailover.connection_validator.call(
           throttle_by: connection,
           in_recovery: proc {
-            result = connection.execute('select pg_is_in_recovery()') { |r| r.to_a }.first
+            result = connection.execute('select pg_is_in_recovery()', &:to_a).first
             %w[1 t true].include?(result['pg_is_in_recovery'].to_s)
           },
           reconnect: proc {
@@ -33,9 +33,9 @@ module PgFailover
             # https://github.com/jeremyevans/sequel/blob/5.15.0/lib/sequel/extensions/connection_validator.rb#L103-L109
             #
             if pool_type == :sharded_threaded
-              sync{allocated(a.last).delete(Thread.current)}
+              sync { allocated(a.last).delete(Thread.current) }
             else
-              sync{@allocated.delete(Thread.current)}
+              sync { @allocated.delete(Thread.current) }
             end
 
             disconnect_connection(connection)

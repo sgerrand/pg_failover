@@ -39,7 +39,7 @@ RSpec.describe PgFailover::ActiveRecordAdapter do
 
       connection_pool.instance_eval(&callback)
 
-      expect(connection_pool).to receive(:execute).with('select pg_is_in_recovery()').and_return([{'pg_is_in_recovery' => 't'}])
+      expect(connection_pool).to receive(:execute).with('select pg_is_in_recovery()').and_return([{ 'pg_is_in_recovery' => 't' }])
 
       expect(in_recovery_proc.call).to eq(true)
     end

@@ -21,7 +21,7 @@ module PgFailover
     end
 
     def enabled
-      self[:enabled] ||= %w(1 t true).include?(ENV['POSTGRES_FAILOVER_ENABLED'])
+      self[:enabled] ||= %w[1 t true].include?(ENV['POSTGRES_FAILOVER_ENABLED'])
     end
 
     def enabled?

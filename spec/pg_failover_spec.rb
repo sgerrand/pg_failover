@@ -10,7 +10,7 @@ require 'pg_failover'
 RSpec.describe PgFailover do
   let(:null_logger) { Logger.new('/dev/null') }
   let(:db)          { double('Database Double') }
-  let(:pool)        { double('Connection Pool Double')}
+  let(:pool)        { double('Connection Pool Double') }
 
   before do
     allow(PgFailover::ActiveRecordAdapter).to receive(:enable)
