@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'logger'
+
 module PgFailover
   Config = Struct.new(:enabled, :logger, :max_retries, :throttle_interval) do
     def logger
