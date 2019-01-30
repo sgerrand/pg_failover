@@ -1,0 +1,60 @@
+version: 2.1
+commands:
+  install-dependencies:
+    steps:
+      - restore_cache:
+          keys:
+            - pg_failover-{{ checksum "pg_failover.gemspec" }}-{{ checksum "Gemfile" }}
+      - run:
+          name: Install Ruby gems
+          command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle
+      - save_cache:
+          key: pg_failover-{{ checksum "pg_failover.gemspec" }}-{{ checksum "Gemfile" }}
+          paths:
+            - vendor/bundle
+  test:
+    steps:
+      - run:
+          name: Run unit tests
+          command: bundle exec rspec
+
+executors:
+  ruby:
+    docker:
+      - image: circleci/ruby:<< parameters.tag >>
+    parameters:
+      tag:
+        description: "Docker image tag"
+        default: "latest"
+        type: string
+
+jobs:
+  build:
+    executor:
+      name: ruby
+      tag: << parameters.tag >>
+    parameters:
+      tag:
+        description: "Docker image tag"
+        default: << parameters.tag >>
+        type: string
+    steps:
+      - checkout
+      - install-dependencies
+      - test
+
+workflows:
+  test:
+    jobs:
+      - build:
+          name: "ruby23"
+          tag: "2.3"
+      - build:
+          name: "ruby24"
+          tag: "2.4"
+      - build:
+          name: "ruby25"
+          tag: "2.5"
+      - build:
+          name: "ruby26"
+          tag: "2.6"
