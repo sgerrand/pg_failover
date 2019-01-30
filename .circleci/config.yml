@@ -3,13 +3,13 @@ commands:
   setup-bundler:
     steps:
       - run:
-          name: Remove old bundler version
+          name: Remove existing Bundler version
           command: gem uninstall bundler
       - run:
-          name: Update rubygems gem
+          name: Update RubyGems
           command: gem update --system
       - run:
-          name: Install new bundler version
+          name: Install Bundler
           command: gem install bundler
 
   install-dependencies:
@@ -28,7 +28,7 @@ commands:
   style:
     steps:
       - run:
-          name: Run rubocop
+          name: Run static code analysis
           command: bundle exec rubocop
 
   test:
