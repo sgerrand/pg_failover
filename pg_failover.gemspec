@@ -11,12 +11,12 @@ Gem::Specification.new do |spec|
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
-  raise "RubyGems 2.0 or newer is required to protect against public gem pushes." unless spec.respond_to?(:metadata)
+  raise 'RubyGems 2.0 or newer is required to protect against public gem pushes.' unless spec.respond_to?(:metadata)
 
   spec.metadata = {
-    "changelog_uri"   => "https://github.com/FundingCircle/pg_failover/blob/master/CHANGELOG.md",
-    "homepage_uri"    => spec.homepage,
-    "source_code_uri" => "https://github.com/FundingCircle/pg_failover",
+    'changelog_uri' => 'https://github.com/FundingCircle/pg_failover/blob/master/CHANGELOG.md',
+    'homepage_uri' => spec.homepage,
+    'source_code_uri' => 'https://github.com/FundingCircle/pg_failover'
   }
 
   # Specify which files should be added to the gem when it is released.
@@ -31,7 +31,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'bundler', '~> 2.0'
   spec.add_development_dependency 'rake', '~> 12.3'
   spec.add_development_dependency 'rspec', '~> 3.0'
-  spec.add_development_dependency "rspec_junit_formatter", "~> 0.4"
+  spec.add_development_dependency 'rspec_junit_formatter', '~> 0.4'
   spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'rubocop-rspec'
 end

@@ -19,7 +19,7 @@ module PgFailover
     end
 
     module ConnectionValidator
-      def acquire(*a)
+      def acquire(*adapter)
         connection = super
 
         PgFailover.connection_validator.call(
@@ -33,7 +33,7 @@ module PgFailover
             # https://github.com/jeremyevans/sequel/blob/5.15.0/lib/sequel/extensions/connection_validator.rb#L103-L109
             #
             if pool_type == :sharded_threaded
-              sync { allocated(a.last).delete(Thread.current) }
+              sync { allocated(adapter.last).delete(Thread.current) }
             else
               sync { @allocated.delete(Thread.current) }
             end
