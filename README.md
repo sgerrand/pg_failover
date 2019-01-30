@@ -72,3 +72,9 @@ version, push git commits and tags, and push the `.gem` file to
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/FundingCircle/pg_failover.
+
+## License
+
+Copyright © 2019 Funding Circle.
+
+Distributed under the BSD 3-Clause License.

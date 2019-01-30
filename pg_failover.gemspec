@@ -3,6 +3,7 @@ Gem::Specification.new do |spec|
   spec.version       = "1.0.0"
   spec.authors       = ["Aleksandar Ivanov", "Andy Chambers", "Sasha Gerrand"]
   spec.email         = ["engineering+pg_failover@fundingcircle.com"]
+  spec.license       = "BSD-3-Clause"
 
   spec.summary       = %q{Handle Postgres failover events gracefully.}
   spec.description   = %q{Handle Postgres failover events gracefully using your favourite ORM.}
