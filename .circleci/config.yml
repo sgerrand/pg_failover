@@ -42,6 +42,20 @@ jobs:
       - checkout
       - install-dependencies
       - test
+  publish:
+    executor:
+      name: ruby
+    steps:
+      - checkout
+      - install-dependencies
+      - run:
+          name: Build gem
+          command: bundle exec rake build
+      - run:
+          name: Publish gem
+          command: |
+            package=$(ls -t1 pkg/pg_failover-*.gem | head -1)
+            gem push "$package"
 
 workflows:
   test:
