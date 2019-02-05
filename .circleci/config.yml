@@ -58,17 +58,40 @@ jobs:
             gem push "$package"
 
 workflows:
-  test:
+  test-and-publish:
     jobs:
       - build:
+          filters:
+            tags:
+              only`: /.*/
           name: "ruby23"
           tag: "2.3"
       - build:
+          filters:
+            tags:
+              only`: /.*/
           name: "ruby24"
           tag: "2.4"
       - build:
+          filters:
+            tags:
+              only`: /.*/
           name: "ruby25"
           tag: "2.5"
       - build:
+          filters:
+            tags:
+              only`: /.*/
           name: "ruby26"
           tag: "2.6"
+      - publish:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v\d+{1,2}\.\d+{1,2}\.\d+{1,2}$/
+          requires:
+            - ruby23
+            - ruby24
+            - ruby25
+            - ruby26
