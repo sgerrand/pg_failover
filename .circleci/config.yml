@@ -63,25 +63,25 @@ workflows:
       - build:
           filters:
             tags:
-              only`: /.*/
+              only: /.*/
           name: "ruby23"
           tag: "2.3"
       - build:
           filters:
             tags:
-              only`: /.*/
+              only: /.*/
           name: "ruby24"
           tag: "2.4"
       - build:
           filters:
             tags:
-              only`: /.*/
+              only: /.*/
           name: "ruby25"
           tag: "2.5"
       - build:
           filters:
             tags:
-              only`: /.*/
+              only: /.*/
           name: "ruby26"
           tag: "2.6"
       - publish:
