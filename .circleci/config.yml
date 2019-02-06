@@ -52,6 +52,11 @@ jobs:
           name: Build gem
           command: bundle exec rake build
       - run:
+          name: Configure RubyGems API key
+          command: |
+            echo ":rubygems_api_key: $RUBYGEMS_API_KEY" >  ~/.gem/credentials
+            chmod 0600 ~/.gem/credentials
+      - run:
           name: Publish gem
           command: |
             package=$(ls -t1 pkg/pg_failover-*.gem | head -1)
