@@ -91,6 +91,7 @@ workflows:
           name: "ruby26"
           tag: "2.6"
       - publish:
+          context: org-rubygems
           filters:
             branches:
               ignore: /.*/
