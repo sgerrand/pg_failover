@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = "pg_failover"
-  spec.version       = "1.0.0"
+  spec.version       = "1.0.0-alpha"
   spec.authors       = ["Aleksandar Ivanov", "Andy Chambers", "Sasha Gerrand"]
   spec.email         = ["engineering+pg_failover@fundingcircle.com"]
   spec.license       = "BSD-3-Clause"
