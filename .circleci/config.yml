@@ -1,17 +1,5 @@
 version: 2.1
 commands:
-  setup-bundler:
-    steps:
-      - run:
-          name: Remove existing Bundler version
-          command: gem uninstall bundler
-      - run:
-          name: Update RubyGems
-          command: gem update --system
-      - run:
-          name: Install Bundler
-          command: gem install bundler
-
   install-dependencies:
     steps:
       - restore_cache:
@@ -61,7 +49,6 @@ jobs:
         type: string
     steps:
       - checkout
-      - setup-bundler
       - install-dependencies
       - style
       - test
