@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 begin
   require 'sequel'
-rescue LoadError => _
+rescue LoadError => _e
 end
 require 'pg_failover'
 
