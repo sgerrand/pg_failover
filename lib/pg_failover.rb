@@ -1,7 +1,7 @@
 module PgFailover
   autoload :ActiveRecordAdapter, 'pg_failover/active_record_adapter'
   autoload :Config, 'pg_failover/config'
-  autoload :ConnectionValidator,  'pg_failover/connection_validator'
+  autoload :ConnectionValidator, 'pg_failover/connection_validator'
   autoload :SequelAdapter, 'pg_failover/sequel_adapter'
   autoload :Throttle, 'pg_failover/throttle'
 

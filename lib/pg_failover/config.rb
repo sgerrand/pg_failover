@@ -20,12 +20,8 @@ module PgFailover
       self[:max_retries] ||= (ENV['POSTGRES_FAILOVER_MAX_RETRIES'] || 1).to_i
     end
 
-    def enabled
-      self[:enabled] ||= %w(1 t true).include?(ENV['POSTGRES_FAILOVER_ENABLED'])
-    end
-
     def enabled?
-      !!enabled
+      self[:enabled] ||= %w[1 t true].include?(ENV['POSTGRES_FAILOVER_ENABLED'])
     end
   end
 end

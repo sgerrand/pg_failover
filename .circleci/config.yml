@@ -12,6 +12,13 @@ commands:
           key: pg_failover-{{ checksum "pg_failover.gemspec" }}-{{ checksum "Gemfile" }}
           paths:
             - vendor/bundle
+
+  style:
+    steps:
+      - run:
+          name: Run static code analysis
+          command: bundle exec rubocop
+
   test:
     steps:
       - run:
@@ -43,6 +50,7 @@ jobs:
     steps:
       - checkout
       - install-dependencies
+      - style
       - test
   publish:
     executor:

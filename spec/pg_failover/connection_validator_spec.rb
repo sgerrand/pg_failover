@@ -34,7 +34,10 @@ RSpec.describe PgFailover::ConnectionValidator do
         3.times do
           validator.call(
             throttle_by: 'something',
-            in_recovery: proc { calls_to_in_recovery += 1; false },
+            in_recovery: proc do
+              calls_to_in_recovery += 1
+              false
+            end,
             reconnect: proc { reconnected = true }
           )
         end
@@ -68,7 +71,10 @@ RSpec.describe PgFailover::ConnectionValidator do
         3.times do
           validator.call(
             throttle_by: 'something',
-            in_recovery: proc { calls_to_in_recovery += 1; true },
+            in_recovery: proc do
+              calls_to_in_recovery += 1
+              true
+            end,
             reconnect: proc { calls_to_reconnect += 1 }
           )
         end
@@ -87,7 +93,10 @@ RSpec.describe PgFailover::ConnectionValidator do
 
         validator.call(
           throttle_by: 'something',
-          in_recovery: proc { calls_to_in_recovery += 1; true },
+          in_recovery: proc do
+            calls_to_in_recovery += 1
+            true
+          end,
           reconnect: proc { calls_to_reconnect += 1 }
         )
 
