@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'active_record'
 require 'active_record/connection_adapters/postgresql_adapter'
 begin
   require 'sequel'
-rescue LoadError => _
+rescue LoadError => _e
 end
 require 'pg_failover'
 

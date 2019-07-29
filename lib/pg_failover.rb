@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PgFailover
   autoload :ActiveRecordAdapter, 'pg_failover/active_record_adapter'
   autoload :Config, 'pg_failover/config'
