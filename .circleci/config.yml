@@ -70,7 +70,7 @@ jobs:
       - run:
           name: Publish gem
           command: |
-            package=$(ls -t1 pkg/pg_failover-*.gem | head -1)
+            package="$(ls -t1 pkg/pg_failover-*.gem | head -1)"
             gem push "$package"
 
 workflows:
